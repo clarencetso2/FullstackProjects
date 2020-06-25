@@ -24,7 +24,11 @@ passport.use(
 	new GoogleStrategy({
 		clientID: keys.googleClientID,
 		clientSecret: keys.googleClientSecret,
-		callbackURL:'/auth/google/callback'
+    //relative path, google thinks we going to
+    //http address rather than https
+		callbackURL:'/auth/google/callback',
+    //to get around this let google trust HEROKU encryption
+    proxy: true
 	}, (accessToken,refreshToken,profile,done) => {
     // console.log("PRINTING!!!!");
 		// console.log(accessToken);
