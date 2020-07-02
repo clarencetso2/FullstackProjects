@@ -13,12 +13,15 @@ module.exports= (app) =>{
   //after user gives permission
   app.get(
   		'/auth/google/callback',
-  		passport.authenticate('google')
+  		passport.authenticate('google'),
+      (req,res)=>{
+        res.redirect('/surveys');
+      }
   );
 
   app.get('/api/logout', (req,res) =>{
     req.logout();
-    res.send(req.user);
+    res.redirect('/');
   });
   //return whoever is logged into application
   //take response, user can get access to user
