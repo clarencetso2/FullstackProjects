@@ -26,6 +26,9 @@ module.exports= (app) =>{
   //return whoever is logged into application
   //take response, user can get access to user
   app.get('/api/current_user',(req,res) => {
+        //req.user comes from cookie
+        //cookieSession extractts data from cookie
+        //and sends it to Passport to serialize/deserialize
         res.send(req.user);
   });
 }

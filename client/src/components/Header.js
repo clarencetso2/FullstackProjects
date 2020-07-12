@@ -19,7 +19,8 @@ class Header extends Component{
     }
   }
   render(){
-    console.log(this.props.auth);
+    // console.log("rendering header");
+    // console.log(this.props.auth);
     return(
       <div>
         <nav>

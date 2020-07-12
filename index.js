@@ -5,7 +5,9 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const  bodyParser = require('body-parser');
 require('./models/User'); //start up mongoose Users config
-require ('./services/passport.js')
+require('./models/Survey.js');
+require ('./services/passport.js');
+
 //connect to mongodb using mongoose
 mongoose.connect(keys.mongoURI);
 //app sets up configuration that listens to incoming requests
@@ -32,6 +34,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if(process.env.NODE_ENV ==='production'){
 	//Express will serve up production assets
